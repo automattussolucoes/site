@@ -150,7 +150,7 @@ export default function Admin() {
             priceVal = priceVal.replace(/[R$\s.]/g, '').replace(',', '.');
         }
         if (!priceVal || isNaN(Number(priceVal))) {
-            priceVal = 0;
+            priceVal = '0';
         }
 
         const { error } = await supabase.from('products').insert([{
@@ -212,7 +212,7 @@ export default function Admin() {
                 priceVal = priceVal.replace(/[R$\s.]/g, '').replace(',', '.');
             }
             if (!priceVal || isNaN(Number(priceVal))) {
-                priceVal = 0;
+                priceVal = '0';
             }
 
             const { error } = await supabase.from('products').update({

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Lock, ArrowRight, Scissors } from 'lucide-react';
+import { Check, Lock, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/sections/Footer';
 import { useState } from 'react';
