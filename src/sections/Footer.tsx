@@ -65,6 +65,33 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Newsletter + Store */}
+          <div>
+            <h4 className="text-[#1E293B] font-semibold text-sm mb-4">Newsletter</h4>
+            <div className="flex gap-2 mb-6">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Seu email"
+                className="flex-1 px-3 py-2 rounded-lg bg-gray-100 border border-gray-200 text-[#1E293B] text-sm placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:outline-none"
+              />
+              <button className="px-3 py-2 rounded-lg bg-[#2563EB] text-white text-sm font-medium hover:brightness-110 transition-colors">
+                OK
+              </button>
+            </div>
+
+            <a
+              href="https://shop.automattus.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-[#64748B] hover:text-[#2563EB] hover:bg-gray-200 transition-colors text-sm"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Loja Online
+            </a>
+          </div>
+
           {/* Contact */}
           <div>
             <h4 className="text-[#1E293B] font-semibold text-sm mb-4">Contato</h4>
@@ -100,33 +127,6 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
-          </div>
-
-          {/* Newsletter + Store */}
-          <div>
-            <h4 className="text-[#1E293B] font-semibold text-sm mb-4">Newsletter</h4>
-            <div className="flex gap-2 mb-6">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Seu email"
-                className="flex-1 px-3 py-2 rounded-lg bg-gray-100 border border-gray-200 text-[#1E293B] text-sm placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:outline-none"
-              />
-              <button className="px-3 py-2 rounded-lg bg-[#2563EB] text-white text-sm font-medium hover:brightness-110 transition-colors">
-                OK
-              </button>
-            </div>
-
-            <a
-              href="https://shop.automattus.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-[#64748B] hover:text-[#2563EB] hover:bg-gray-200 transition-colors text-sm"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Loja Online
-            </a>
           </div>
         </div>
       </div>
