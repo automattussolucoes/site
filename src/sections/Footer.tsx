@@ -5,6 +5,7 @@ const quickLinks = [
   { name: 'Soluções', href: '#solucoes' },
   { name: 'Processo', href: '#processo' },
   { name: 'Contato', href: '#contato' },
+  { name: 'Admin', href: '/admin' },
 ];
 
 export default function Footer() {
@@ -49,7 +50,12 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
+                    onClick={(e) => {
+                      if (link.href.startsWith('#')) {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                      }
+                    }}
                     className="text-[#64748B] hover:text-[#2563EB] text-sm transition-colors"
                   >
                     {link.name}
