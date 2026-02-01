@@ -95,10 +95,10 @@ export default function Produtos() {
                 href={produto.affiliate_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="aspect-[4/3] bg-white flex items-center justify-center overflow-hidden border-b border-gray-100 cursor-pointer"
+                className="aspect-[3/2] bg-white flex items-center justify-center overflow-hidden border-b border-gray-100 cursor-pointer p-4"
               >
                 {produto.image_url ? (
-                  <img src={produto.image_url} alt={produto.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={produto.image_url} alt={produto.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                   <ShoppingBag className="w-10 h-10 text-gray-300" />
                 )}
