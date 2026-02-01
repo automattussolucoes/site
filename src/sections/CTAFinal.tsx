@@ -46,7 +46,7 @@ export default function CTAFinal() {
         >
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Pronto para o <br className="hidden sm:block" /> <span className="text-blue-500">Próximo Nível</span>?
+            Pronto para o <br /> <span className="text-blue-500">Próximo Nível</span>?
           </h2>
           <p className="text-slate-400 text-base mb-10 max-w-xl mx-auto">
             Orçamento sem compromisso. Resposta em 24h.

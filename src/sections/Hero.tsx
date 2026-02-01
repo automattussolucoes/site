@@ -95,8 +95,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-base sm:text-lg text-[#64748B] max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Projetos de Casas e Sistemas de Empresas que entregam
-            resultados mensuráveis. Tecnologia que trabalha para você.
+            Projetos de Casas e Sistemas de Empresas que entregam resultados mensuráveis. <br /> Tecnologia que trabalha para você.
           </motion.p>
 
           {/* CTAs */}

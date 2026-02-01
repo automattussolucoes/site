@@ -48,7 +48,7 @@ export default function Processo() {
             Processo <span className="text-gradient-blue">Simplificado</span>
           </h2>
           <p className="text-[#64748B] text-xs max-w-2xl mx-auto">
-            Da primeira conversa à entrega final. Transparência e eficiência em cada etapa.
+            Da primeira conversa à entrega final. <br /> Transparência e eficiência em cada etapa.
           </p>
         </motion.div>
 
