@@ -47,7 +47,7 @@ export default function Processo() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-4">
             Processo <span className="text-gradient-blue">Simplificado</span>
           </h2>
-          <p className="text-[#64748B] text-xs max-w-2xl mx-auto">
+          <p className="text-[#64748B] max-w-2xl mx-auto">
             Da primeira conversa à entrega final. <br /> Transparência e eficiência em cada etapa.
           </p>
         </motion.div>

@@ -48,8 +48,8 @@ export default function CTAFinal() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Pronto para o <br /> <span className="text-blue-500">Próximo Nível</span>?
           </h2>
-          <p className="text-slate-400 text-base mb-10 max-w-xl mx-auto">
-            Orçamento sem compromisso. Resposta em 24h.
+          <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
+            Orçamento sem compromisso. <br /> Resposta em 24h.
           </p>
 
           {/* Form */}
@@ -103,7 +103,7 @@ export default function CTAFinal() {
           )}
 
           {/* Trust Text */}
-          <p className="text-slate-600 text-[10px] mt-6">
+          <p className="text-slate-600 text-sm mt-6">
             Ao enviar, você concorda com nossa política de privacidade.
           </p>
         </motion.div>
