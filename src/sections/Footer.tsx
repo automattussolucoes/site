@@ -31,7 +31,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-[#64748B] text-sm mt-4 leading-relaxed">
-              Automação residencial e sistemas empresariais que entregam resultados mensuráveis.
+              Automação de Casas e Sistemas de Empresas que entregam resultados mensuráveis.
             </p>
             <div className="flex gap-3 mt-6">
               <a href="#" className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-[#64748B] hover:text-[#2563EB] hover:bg-gray-200 transition-colors">

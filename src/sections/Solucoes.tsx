@@ -95,9 +95,9 @@ export default function Solucoes() {
             Nossas Soluções
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-4">
-            Tecnologia para <span className="text-gradient-blue">Todo Ambiente</span>
+            Tecnologia para <br className="hidden sm:block" /> <span className="text-gradient-blue">Todo Ambiente</span>
           </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
+          <p className="text-[#64748B] text-sm max-w-2xl mx-auto">
             Do conforto da sua casa à eficiência do seu negócio.
             Soluções personalizadas que entregam resultados.
           </p>
