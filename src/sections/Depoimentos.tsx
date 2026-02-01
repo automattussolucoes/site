@@ -10,8 +10,13 @@ export default function Depoimentos() {
 
     useEffect(() => {
         const fetchTestimonials = async () => {
-            const { data } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false });
-            if (data) setTestimonials(data);
+            try {
+                const { data, error } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+                if (data) setTestimonials(data);
+            } catch (err) {
+                console.error('Error fetching testimonials:', err);
+            }
         };
         fetchTestimonials();
     }, []);
