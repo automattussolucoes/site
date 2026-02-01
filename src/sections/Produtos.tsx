@@ -54,7 +54,7 @@ export default function Produtos() {
               Produtos
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1E293B]">
-              Destaques da <span className="text-gradient-blue">Loja</span>
+              <span className="text-gradient-blue">Destaques</span>
             </h2>
           </div>
 
