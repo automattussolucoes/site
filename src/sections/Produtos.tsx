@@ -40,7 +40,7 @@ export default function Produtos() {
   }, []);
 
   return (
-    <section className="relative py-24 bg-white">
+    <section id="produtos" className="relative py-24 bg-white">
       <div className="section-padding max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

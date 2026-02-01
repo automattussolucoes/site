@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 const quickLinks = [
   { name: 'Soluções', href: '#solucoes' },
+  { name: 'Produtos', href: '#produtos' },
   { name: 'Processo', href: '#processo' },
   { name: 'Contato', href: '#contato' },
   { name: 'Admin', href: '/admin' },
