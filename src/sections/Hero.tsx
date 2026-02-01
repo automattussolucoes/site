@@ -114,7 +114,7 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4" />
             </motion.button>
             <motion.a
-              href="https://loja.automattus.com.br"
+              href="https://shop.automattus.com.br"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}

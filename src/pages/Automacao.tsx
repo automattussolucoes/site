@@ -45,7 +45,7 @@ export default function Automacao() {
                                 Tecnologia invisível que se adapta ao seu estilo de vida.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <a href="https://loja.automattus.com.br" target="_blank" className="px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold transition-colors inline-flex items-center justify-center gap-2">
+                                <a href="https://shop.automattus.com.br" target="_blank" className="px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold transition-colors inline-flex items-center justify-center gap-2">
                                     Ver Produtos
                                 </a>
                                 <a href="#contato" className="px-8 py-4 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors text-base font-medium">

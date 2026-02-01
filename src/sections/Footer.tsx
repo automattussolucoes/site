@@ -119,7 +119,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://loja.automattus.com.br"
+              href="https://shop.automattus.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-[#64748B] hover:text-[#2563EB] hover:bg-gray-200 transition-colors text-sm"
