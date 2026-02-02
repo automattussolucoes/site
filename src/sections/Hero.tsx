@@ -93,9 +93,9 @@ export default function Hero() {
           {/* Subheadline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-[#64748B] max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg sm:text-xl text-[#64748B] max-w-4xl mx-auto mb-10 leading-relaxed"
           >
-            Projetos de Casas e Sistemas de Empresas <br /> que entregam resultados mensuráveis. <br /> Tecnologia que trabalha para você.
+            Projetos de Casas e Sistemas de Empresas que entregam resultados mensuráveis. Tecnologia que trabalha para você.
           </motion.p>
 
           {/* CTAs */}

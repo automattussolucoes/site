@@ -95,10 +95,10 @@ export default function Solucoes() {
             Nossas Soluções
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-4">
-            Tecnologia para <br /> <span className="text-gradient-blue">Todo Ambiente</span>
+            Tecnologia para <span className="text-gradient-blue">Todo Ambiente</span>
           </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
-            Do conforto da sua casa <br /> à eficiência do seu negócio. <br /> Soluções personalizadas <br /> que entregam resultados.
+          <p className="text-[#64748B] max-w-4xl mx-auto">
+            Do conforto da sua casa à eficiência do seu negócio. Soluções personalizadas que entregam resultados.
           </p>
         </motion.div>
 
