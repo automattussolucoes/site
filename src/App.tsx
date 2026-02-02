@@ -6,6 +6,7 @@ import CRM from '@/pages/CRM';
 import PDV from '@/pages/PDV';
 import Obras from '@/pages/Obras';
 import Barber from '@/pages/Barber';
+import PaginaProdutos from '@/pages/PaginaProdutos';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/pdv" element={<PDV />} />
       <Route path="/obras" element={<Obras />} />
       <Route path="/barber" element={<Barber />} />
+      <Route path="/produtos" element={<PaginaProdutos />} />
     </Routes>
   );
 }
