@@ -415,7 +415,7 @@ export default function Admin() {
                                     />
                                     <label htmlFor="new-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
                                 </div>
-                                <Textarea placeholder="Descrição do produto..." value={newProduct.description} onChange={e => setNewProduct({ ...newProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 text-white placeholder:text-slate-500 h-24" />
+                                <Textarea placeholder="Descrição do produto..." value={newProduct.description} onChange={e => setNewProduct({ ...newProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 text-white placeholder:text-slate-500 min-h-[160px]" />
                                 <div className="flex justify-end pt-2">
                                     <Button onClick={handleCreateProduct} className="bg-emerald-600 hover:bg-emerald-700 text-white" disabled={uploading}>
                                         {uploading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Plus className="w-4 h-4 mr-2" />}
@@ -474,7 +474,7 @@ export default function Admin() {
                                                     />
                                                     <label htmlFor="edit-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
                                                 </div>
-                                                <Textarea value={editingProduct.description} onChange={e => setEditingProduct({ ...editingProduct, description: e.target.value })} className="bg-slate-900 border-slate-800" placeholder="Descrição" />
+                                                <Textarea value={editingProduct.description} onChange={e => setEditingProduct({ ...editingProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 min-h-[160px]" placeholder="Descrição" />
                                                 <div className="flex gap-2 justify-end">
                                                     <Button size="sm" variant="ghost" onClick={() => setEditingProduct(null)}>Cancelar</Button>
                                                     <Button size="sm" onClick={handleUpdateProduct} className="bg-blue-600" disabled={uploading}>Salvar Alterações</Button>
