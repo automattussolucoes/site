@@ -128,7 +128,7 @@ export default function Produtos() {
                 </p>
                 <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
                   <span className="text-[#2563EB] font-bold text-sm">
-                    {produto.hide_price ? 'Consulte o valor' : `R$ ${produto.price}`}
+                    {produto.hide_price ? 'Consulte' : `R$ ${produto.price}`}
                   </span>
                   <a
                     href={produto.affiliate_link}

@@ -413,7 +413,7 @@ export default function Admin() {
                                         onChange={e => setNewProduct({ ...newProduct, hide_price: e.target.checked })}
                                         className="w-4 h-4 rounded border-slate-800 bg-slate-950 text-blue-600 focus:ring-blue-500"
                                     />
-                                    <label htmlFor="new-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
+                                    <label htmlFor="new-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte")</label>
                                 </div>
                                 <Textarea placeholder="Descrição do produto..." value={newProduct.description} onChange={e => setNewProduct({ ...newProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 text-white placeholder:text-slate-500 min-h-[160px]" />
                                 <div className="flex justify-end pt-2">
@@ -472,7 +472,7 @@ export default function Admin() {
                                                         onChange={e => setEditingProduct({ ...editingProduct, hide_price: e.target.checked })}
                                                         className="w-4 h-4 rounded border-slate-800 bg-slate-950 text-blue-600 focus:ring-blue-500"
                                                     />
-                                                    <label htmlFor="edit-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
+                                                    <label htmlFor="edit-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte")</label>
                                                 </div>
                                                 <Textarea value={editingProduct.description} onChange={e => setEditingProduct({ ...editingProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 min-h-[160px]" placeholder="Descrição" />
                                                 <div className="flex gap-2 justify-end">
@@ -501,7 +501,7 @@ export default function Admin() {
                                             <p className="text-slate-400 text-sm mb-3 line-clamp-2">{product.description}</p>
                                             <div className="flex items-center gap-4 text-sm">
                                                 <span className="text-emerald-400 font-medium">
-                                                    {product.hide_price ? 'Consulte o valor' : product.price}
+                                                    {product.hide_price ? 'Consulte' : product.price}
                                                 </span>
                                                 <a href={product.affiliate_link} target="_blank" className="text-slate-500 hover:text-blue-400 truncate max-w-[200px]">{product.affiliate_link}</a>
                                             </div>
