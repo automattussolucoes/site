@@ -16,7 +16,7 @@ export default function Admin() {
     const [logoUrl, setLogoUrl] = useState('');
     const [products, setProducts] = useState<any[]>([]);
     const [editingProduct, setEditingProduct] = useState<any>(null);
-    const [newProduct, setNewProduct] = useState({ name: '', description: '', price: '', tag: '', image_url: '', affiliate_link: '' });
+    const [newProduct, setNewProduct] = useState({ name: '', description: '', price: '', tag: '', image_url: '', affiliate_link: '', hide_price: false });
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
 
@@ -160,11 +160,12 @@ export default function Admin() {
             tag: newProduct.tag,
             image_url: newProduct.image_url,
             affiliate_link: newProduct.affiliate_link,
+            hide_price: newProduct.hide_price,
             marketplace: 'Loja Automattus', // Default value
             product_type: 'Produto' // Default value
         }]);
         if (!error) {
-            setNewProduct({ name: '', description: '', price: '', tag: '', image_url: '', affiliate_link: '' });
+            setNewProduct({ name: '', description: '', price: '', tag: '', image_url: '', affiliate_link: '', hide_price: false });
             fetchData();
         } else {
             console.error('Error creating product:', error);
@@ -221,7 +222,8 @@ export default function Admin() {
                 price: priceVal.toString(),
                 tag: editingProduct.tag,
                 image_url: editingProduct.image_url,
-                affiliate_link: editingProduct.affiliate_link // sending as affiliate_link
+                affiliate_link: editingProduct.affiliate_link,
+                hide_price: editingProduct.hide_price
             }).eq('id', editingProduct.id);
 
             if (error) throw error;
@@ -403,6 +405,16 @@ export default function Admin() {
                                     <Input placeholder="Tag (ex: Novo, Oferta)" value={newProduct.tag} onChange={e => setNewProduct({ ...newProduct, tag: e.target.value })} className="bg-slate-950 border-slate-800 text-white placeholder:text-slate-500" />
                                     <Input placeholder="Link da Loja (Obrigatório)" value={newProduct.affiliate_link} onChange={e => setNewProduct({ ...newProduct, affiliate_link: e.target.value })} className="bg-slate-950 border-slate-800 text-white placeholder:text-slate-500" />
                                 </div>
+                                <div className="flex items-center gap-2 px-1">
+                                    <input
+                                        type="checkbox"
+                                        id="new-hide-price"
+                                        checked={newProduct.hide_price}
+                                        onChange={e => setNewProduct({ ...newProduct, hide_price: e.target.checked })}
+                                        className="w-4 h-4 rounded border-slate-800 bg-slate-950 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <label htmlFor="new-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
+                                </div>
                                 <Textarea placeholder="Descrição do produto..." value={newProduct.description} onChange={e => setNewProduct({ ...newProduct, description: e.target.value })} className="bg-slate-900 border-slate-800 text-white placeholder:text-slate-500 h-24" />
                                 <div className="flex justify-end pt-2">
                                     <Button onClick={handleCreateProduct} className="bg-emerald-600 hover:bg-emerald-700 text-white" disabled={uploading}>
@@ -452,6 +464,16 @@ export default function Admin() {
                                                     <Input value={editingProduct.tag} onChange={e => setEditingProduct({ ...editingProduct, tag: e.target.value })} className="bg-slate-900 border-slate-800" placeholder="Tag" />
                                                     <Input value={editingProduct.affiliate_link} onChange={e => setEditingProduct({ ...editingProduct, affiliate_link: e.target.value })} className="bg-slate-900 border-slate-800" placeholder="URL da Loja" />
                                                 </div>
+                                                <div className="flex items-center gap-2 px-1">
+                                                    <input
+                                                        type="checkbox"
+                                                        id="edit-hide-price"
+                                                        checked={editingProduct.hide_price}
+                                                        onChange={e => setEditingProduct({ ...editingProduct, hide_price: e.target.checked })}
+                                                        className="w-4 h-4 rounded border-slate-800 bg-slate-950 text-blue-600 focus:ring-blue-500"
+                                                    />
+                                                    <label htmlFor="edit-hide-price" className="text-sm text-slate-400 cursor-pointer">Ocultar valor (mostrar "Consulte o valor")</label>
+                                                </div>
                                                 <Textarea value={editingProduct.description} onChange={e => setEditingProduct({ ...editingProduct, description: e.target.value })} className="bg-slate-900 border-slate-800" placeholder="Descrição" />
                                                 <div className="flex gap-2 justify-end">
                                                     <Button size="sm" variant="ghost" onClick={() => setEditingProduct(null)}>Cancelar</Button>
@@ -478,7 +500,9 @@ export default function Admin() {
                                             </div>
                                             <p className="text-slate-400 text-sm mb-3 line-clamp-2">{product.description}</p>
                                             <div className="flex items-center gap-4 text-sm">
-                                                <span className="text-emerald-400 font-medium">{product.price}</span>
+                                                <span className="text-emerald-400 font-medium">
+                                                    {product.hide_price ? 'Consulte o valor' : product.price}
+                                                </span>
                                                 <a href={product.affiliate_link} target="_blank" className="text-slate-500 hover:text-blue-400 truncate max-w-[200px]">{product.affiliate_link}</a>
                                             </div>
                                         </div>
