@@ -12,42 +12,9 @@ export default function Automacao() {
         message: ''
     });
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            const response = await fetch('https://formspree.io/f/mqaebrda', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    _cc: 'contato@automatushome.com.br',
-                    _subject: `Novo Contato Automação: ${formData.name}`
-                })
-            });
-
-            if (response.ok) {
-                alert('Solicitação enviada! Entraremos em contato em breve.');
-                setFormData({ name: '', email: '', phone: '', message: '' });
-            } else {
-                const data = await response.json();
-                if (data.errors) {
-                    alert(data.errors.map((error: any) => error.message).join(', '));
-                } else {
-                    alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
-                }
-            }
-        } catch (error) {
-            alert('Erro de conexão. Verifique sua internet.');
-        } finally {
-            setIsSubmitting(false);
-        }
+    // Formulário agora usa o envio nativo do Formspree para maior confiabilidade
+    const handleSubmit = () => {
+        // Opcional: Lógica de analytics aqui
     };
     return (
         <div className="min-h-screen bg-slate-950 text-white">
@@ -152,23 +119,22 @@ export default function Automacao() {
                         <p className="text-slate-400">Preencha o formulário e nossa equipe entrará em contato.</p>
                     </motion.div>
 
-                    <motion.form
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        onSubmit={handleSubmit}
+                    <form
+                        action="https://formspree.io/f/mqaebrda"
+                        method="POST"
                         className="bg-slate-900 p-8 rounded-2xl border border-slate-800"
                     >
-                        <div className="grid md:grid-cols-2 gap-6 mb-6">
+                        {/* Configurações do Formspree */}
+                        <input type="hidden" name="_cc" value="contato@automatushome.com.br" />
+                        <input type="hidden" name="_subject" value="Novo Contato: Site Automattus" />
+
+                        <div className="grid md:grid-cols-2 gap-6 mb-6 text-left">
                             <div>
                                 <label className="block text-sm font-medium text-slate-300 mb-2">Nome Completo</label>
                                 <input
                                     type="text"
                                     name="nome"
                                     required
-                                    value={formData.name}
-                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
                                     placeholder="Seu nome"
                                 />
@@ -179,8 +145,6 @@ export default function Automacao() {
                                     type="email"
                                     name="email"
                                     required
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
                                     placeholder="seu@email.com"
                                 />
@@ -193,8 +157,6 @@ export default function Automacao() {
                                 type="tel"
                                 name="telefone"
                                 required
-                                value={formData.phone}
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
                                 placeholder="(11) 99999-9999"
                             />
@@ -205,8 +167,6 @@ export default function Automacao() {
                             <textarea
                                 required
                                 name="mensagem"
-                                value={formData.message}
-                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 rows={5}
                                 className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
                                 placeholder="Descreva seu projeto..."
@@ -215,13 +175,12 @@ export default function Automacao() {
 
                         <button
                             type="submit"
-                            disabled={isSubmitting}
-                            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                         >
-                            {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
+                            Enviar Solicitação
                             <ArrowRight className="w-5 h-5" />
                         </button>
-                    </motion.form>
+                    </form>
                 </div>
             </section>
 
