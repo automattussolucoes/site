@@ -83,7 +83,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://shop.automattus.com.br"
+              href="https://loja.automattus.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-[#64748B] hover:text-[#2563EB] hover:bg-gray-200 transition-colors text-sm"
@@ -108,6 +108,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#2563EB] mt-0.5" />
                 <div>
                   <p className="text-[#1E293B] text-sm">contato@automattus.com.br</p>
+                  <p className="text-[#1E293B] text-sm">contato@automatushome.com.br</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">

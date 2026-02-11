@@ -10,15 +10,36 @@ export default function CTAFinal() {
   const [whatsapp, setWhatsapp] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email || whatsapp) {
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setEmail('');
-        setWhatsapp('');
-      }, 3000);
+      try {
+        const response = await fetch('https://formspree.io/f/mqaebrda', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            whatsapp,
+            _cc: 'contato@automatushome.com.br',
+            _subject: `Nova Lead site Automattus: ${email || whatsapp}`
+          })
+        });
+
+        if (response.ok) {
+          setIsSubmitted(true);
+          setTimeout(() => {
+            setIsSubmitted(false);
+            setEmail('');
+            setWhatsapp('');
+          }, 3000);
+        } else {
+          alert('Erro ao enviar. Tente novamente.');
+        }
+      } catch (error) {
+        alert('Erro de conexão.');
+      }
     }
   };
 

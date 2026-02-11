@@ -59,7 +59,7 @@ export default function Produtos() {
           </div>
 
           <motion.a
-            href="https://shop.automattus.com.br"
+            href="https://loja.automattus.com.br"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ x: 4 }}
@@ -152,7 +152,7 @@ export default function Produtos() {
           className="mt-12 text-center"
         >
           <a
-            href="https://shop.automattus.com.br"
+            href="https://loja.automattus.com.br"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-100 text-[#475569] hover:bg-gray-200 hover:text-[#1E293B] transition-colors text-sm"

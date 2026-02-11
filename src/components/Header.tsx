@@ -66,7 +66,7 @@ export default function Header() {
             {/* CTAs */}
             <div className="hidden lg:flex items-center gap-4">
               <motion.a
-                href="https://shop.automattus.com.br"
+                href="https://loja.automattus.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
@@ -126,7 +126,7 @@ export default function Header() {
                 ))}
 
                 <motion.a
-                  href="https://shop.automattus.com.br"
+                  href="https://loja.automattus.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, x: 20 }}

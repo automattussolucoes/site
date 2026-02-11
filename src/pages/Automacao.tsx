@@ -12,10 +12,31 @@ export default function Automacao() {
         message: ''
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert('Solicitação enviada! Entraremos em contato em breve.');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+
+        try {
+            const response = await fetch('https://formspree.io/f/mqaebrda', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _cc: 'contato@automatushome.com.br',
+                    _subject: `Novo Contato Automação: ${formData.name}`
+                })
+            });
+
+            if (response.ok) {
+                alert('Solicitação enviada! Entraremos em contato em breve.');
+                setFormData({ name: '', email: '', phone: '', message: '' });
+            } else {
+                alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+            }
+        } catch (error) {
+            alert('Erro de conexão. Verifique sua internet.');
+        }
     };
     return (
         <div className="min-h-screen bg-slate-950 text-white">
@@ -45,7 +66,7 @@ export default function Automacao() {
                                 Tecnologia invisível que se adapta ao seu estilo de vida.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <a href="https://shop.automattus.com.br" target="_blank" className="px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold transition-colors inline-flex items-center justify-center gap-2">
+                                <a href="https://loja.automattus.com.br" target="_blank" className="px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold transition-colors inline-flex items-center justify-center gap-2">
                                     Ver Produtos
                                 </a>
                                 <a href="#contato" className="px-8 py-4 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors text-base font-medium">

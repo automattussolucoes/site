@@ -21,7 +21,7 @@ const solucoes = [
     gradient: 'from-[#2563EB]/10 to-transparent',
     secondaryLink: {
       text: 'Loja Online',
-      url: 'https://shop.automattus.com.br',
+      url: 'https://loja.automattus.com.br',
       external: true
     }
   },
