@@ -1,11 +1,48 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export default function CTAFinal() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const object = Object.fromEntries(data.entries());
+
+    try {
+      const response = await fetch('https://formspree.io/f/mqaebrda', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(object)
+      });
+
+      if (response.ok) {
+        alert('Solicitação enviada! Entraremos em contato em breve.');
+        form.reset();
+      } else {
+        const result = await response.json();
+        if (result.errors) {
+          alert(result.errors.map((error: any) => error.message).join(", "));
+        } else {
+          alert('Ocorreu um erro ao enviar. Por favor, verifique os dados e tente novamente.');
+        }
+      }
+    } catch (error) {
+      alert('Erro de conexão. Verifique sua internet ou tente novamente mais tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contato" className="relative py-24 overflow-hidden bg-[#020617]">
@@ -35,8 +72,7 @@ export default function CTAFinal() {
 
         <div className="max-w-3xl mx-auto">
           <form
-            action="https://formspree.io/f/mqaebrda"
-            method="POST"
+            onSubmit={handleSubmit}
             className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800 backdrop-blur-sm"
           >
             {/* Configurações do Formspree */}
@@ -90,9 +126,10 @@ export default function CTAFinal() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20"
             >
-              Solicitar Orçamento
+              {isSubmitting ? 'Enviando...' : 'Solicitar Orçamento'}
               <ArrowRight className="w-5 h-5" />
             </button>
           </form>
