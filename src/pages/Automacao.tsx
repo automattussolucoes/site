@@ -12,14 +12,18 @@ export default function Automacao() {
         message: ''
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         try {
             const response = await fetch('https://formspree.io/f/mqaebrda', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                     ...formData,
@@ -32,10 +36,17 @@ export default function Automacao() {
                 alert('Solicitação enviada! Entraremos em contato em breve.');
                 setFormData({ name: '', email: '', phone: '', message: '' });
             } else {
-                alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+                const data = await response.json();
+                if (data.errors) {
+                    alert(data.errors.map((error: any) => error.message).join(', '));
+                } else {
+                    alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+                }
             }
         } catch (error) {
             alert('Erro de conexão. Verifique sua internet.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
     return (
@@ -154,6 +165,7 @@ export default function Automacao() {
                                 <label className="block text-sm font-medium text-slate-300 mb-2">Nome Completo</label>
                                 <input
                                     type="text"
+                                    name="nome"
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -165,6 +177,7 @@ export default function Automacao() {
                                 <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
                                 <input
                                     type="email"
+                                    name="email"
                                     required
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -178,6 +191,7 @@ export default function Automacao() {
                             <label className="block text-sm font-medium text-slate-300 mb-2">Telefone</label>
                             <input
                                 type="tel"
+                                name="telefone"
                                 required
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -190,6 +204,7 @@ export default function Automacao() {
                             <label className="block text-sm font-medium text-slate-300 mb-2">Mensagem</label>
                             <textarea
                                 required
+                                name="mensagem"
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 rows={5}
@@ -200,9 +215,10 @@ export default function Automacao() {
 
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                            disabled={isSubmitting}
+                            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                         >
-                            Enviar Solicitação
+                            {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
                             <ArrowRight className="w-5 h-5" />
                         </button>
                     </motion.form>
