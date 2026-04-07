@@ -29,12 +29,6 @@ const itemVariants = {
 };
 
 export default function Hero() {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section
@@ -85,9 +79,9 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1E293B] mb-6 leading-[1.1] tracking-tight"
           >
-            Automação que
+            Automação Residencial
             <br />
-            <span className="text-gradient-blue">Eleva Seu Padrão</span>
+            <span className="text-gradient-blue">e Empresarial</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -95,7 +89,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-lg sm:text-xl text-[#64748B] max-w-4xl mx-auto mb-10 leading-relaxed"
           >
-            Projetos de Casas e Sistemas de Empresas que entregam resultados mensuráveis. Tecnologia que trabalha para você.
+            Conte-nos o que precisa e deixe com a gente!
           </motion.p>
 
           {/* CTAs */}
@@ -103,15 +97,17 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <motion.button
+            <motion.a
+              href="https://wa.me/5584986094938"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => scrollToSection('#contato')}
               className="btn-primary flex items-center gap-2 text-base px-8 py-4"
             >
               Solicitar Orçamento
               <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            </motion.a>
             <motion.a
               href="https://loja.automattus.com.br"
               target="_blank"

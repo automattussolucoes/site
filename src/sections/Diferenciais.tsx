@@ -10,11 +10,26 @@ const diferenciais = [
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
     if (isInView) {
+      // Skip animation if user prefers reduced motion
+      if (prefersReducedMotion) {
+        setCount(value);
+        return;
+      }
+
       const duration = 2000;
       const steps = 60;
       const increment = value / steps;
@@ -32,10 +47,10 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
       return () => clearInterval(timer);
     }
-  }, [isInView, value]);
+  }, [isInView, value, prefersReducedMotion]);
 
   return (
-    <span ref={ref} className="font-mono">
+    <span ref={ref} className="font-mono" aria-label={`${value}${suffix}`}>
       {count}{suffix}
     </span>
   );
@@ -46,7 +61,7 @@ export default function Diferenciais() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-20 bg-white border-y border-gray-100">
+    <section className="relative py-20 bg-white border-y border-gray-100" aria-label="Nossos diferenciais em números">
       <div className="section-padding max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -54,6 +69,7 @@ export default function Diferenciais() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+          role="list"
         >
           {diferenciais.map((item, index) => (
             <motion.div
@@ -62,6 +78,7 @@ export default function Diferenciais() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1 }}
               className="text-center"
+              role="listitem"
             >
               <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient-blue mb-2">
                 <AnimatedCounter value={item.value} suffix={item.suffix} />

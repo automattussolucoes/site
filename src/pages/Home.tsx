@@ -1,30 +1,33 @@
-
 import Header from '@/components/Header';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import Hero from '@/sections/Hero';
 import TrustBar from '@/sections/TrustBar';
-import Solucoes from '@/sections/Solucoes';
-import Diferenciais from '@/sections/Diferenciais';
+import AutomacaoSection from '@/sections/AutomacaoSection';
+import SistemasDinamicos from '@/sections/SistemasDinamicos';
 import Produtos from '@/sections/Produtos';
-import Processo from '@/sections/Processo';
+import ProdutosIndicados from '@/sections/ProdutosIndicados';
+import Diferenciais from '@/sections/Diferenciais';
 import Depoimentos from '@/sections/Depoimentos';
 import CTAFinal from '@/sections/CTAFinal';
 import Footer from '@/sections/Footer';
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden">
+        <div className="min-h-screen bg-white text-[#1E293B] overflow-x-hidden">
             <Header />
-            <main>
+            <main id="main-content">
                 <Hero />
                 <TrustBar />
-                <Solucoes />
-                <Diferenciais />
+                <AutomacaoSection />
                 <Produtos />
-                <Processo />
+                <ProdutosIndicados />
+                <Diferenciais />
+                <SistemasDinamicos />
                 <Depoimentos />
                 <CTAFinal />
             </main>
             <Footer />
+            <WhatsAppButton />
         </div>
     );
 }
